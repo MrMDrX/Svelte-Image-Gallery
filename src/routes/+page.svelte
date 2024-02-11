@@ -1,50 +1,53 @@
+<script>
+  import { onMount } from "svelte";
+  import axios from "axios";
+
+  let keyword = "";
+  let photos = [];
+  const fetchImages = async () => {
+    const res = await axios.get(
+      `https://api.unsplash.com/search/photos?page=1&query=${keyword || "nature"}&client_id=YourUnsplashAccessKey`
+    );
+    photos = res.data.results;
+  };
+
+  onMount(() => {
+    fetchImages();
+  });
+
+  const handleSearch = async () => {
+    if (!keyword) return;
+    await fetchImages();
+    keyword = "";
+  };
+</script>
+
 <div class="container">
   <div class="header">
     <h1>Image Gallery</h1>
     <div class="input-container">
-      <input type="text" name="" class="input" />
-      <button class="button">Search</button>
+      <input
+        bind:value={keyword}
+        type="text"
+        class="input"
+        placeholder="keyword"
+      />
+      <button on:click={handleSearch} class="button">Search</button>
     </div>
   </div>
   <div class="photos">
-    <img
-      src="https://source.unsplash.com/1920x1080/weekly?Mountains,backgorund"
-      alt="mountain image"
-      class="image"
-    />
-    <img
-      src="https://source.unsplash.com/1920x1080/weekly?Mountains,backgorund"
-      alt="mountain image"
-      class="image"
-    />
-    <img
-      src="https://source.unsplash.com/1920x1080/weekly?Mountains,backgorund"
-      alt="mountain image"
-      class="image"
-    />
-    <img
-      src="https://source.unsplash.com/1920x1080/weekly?Mountains,backgorund"
-      alt="mountain image"
-      class="image"
-    />
-    <img
-      src="https://source.unsplash.com/1920x1080/weekly?Mountains,backgorund"
-      alt="mountain image"
-      class="image"
-    />
-    <img
-      src="https://source.unsplash.com/1920x1080/weekly?Mountains,backgorund"
-      alt="mountain image"
-      class="image"
-    />
+    {#each photos as photo, i (photo.id)}
+      <img src={photo.urls.regular} alt={photo.alt_description} class="image" />
+    {/each}
   </div>
 </div>
 
 <style>
   .image {
-    width: 400px;
+    width: 30%;
     height: 250px;
     margin: 5px;
+    object-fit: cover;
   }
   .photos {
     display: flex;
