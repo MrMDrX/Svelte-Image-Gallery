@@ -8,7 +8,7 @@
   const fetchImages = async () => {
     const res = await axios.get(
       `https://api.unsplash.com/search/photos?page=1&query=${keyword || "nature"}&client_id=YourUnsplashAccessKey`
-    );
+    ); // Add your access key here
     photos = res.data.results;
   };
 

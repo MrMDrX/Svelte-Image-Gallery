@@ -1,38 +1,46 @@
-# create-svelte
+# Svelte Image Gallery Search
 
-Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/main/packages/create-svelte).
+This is an image gallery search app built using Svelte and the Unsplash API. It allows users to search for images based on keywords and view the results in a gallery format.
 
-## Creating a project
+## Features
 
-If you're seeing this, you've probably already done this step. Congrats!
+- [x] Search for images using keywords
+- [x] View image results in a gallery format
+- [ ] Click on an image to view it in full size
 
-```bash
-# create a new project in the current directory
-npm create svelte@latest
+## Getting Started
 
-# create a new project in my-app
-npm create svelte@latest my-app
-```
+1. Clone the repository:
 
-## Developing
+   ```bash
+   git clone https://github.com/MrMDrX/Svelte-Image-Gallery.git
+   ```
 
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+2. Install dependencies:
 
-```bash
-npm run dev
+   ```bash
+   cd Svelte-Image-Gallery
+   pnpm install
+   ```
 
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
-```
+3. Set up your Unsplash API access:
 
-## Building
+   - Create a developer account on Unsplash (https://unsplash.com/developers)
+   - Create a new application to get your access key
+   - Add the your access key in the project
 
-To create a production version of your app:
+4. Start the development server:
 
-```bash
-npm run build
-```
+   ```bash
+   pnpm run dev
+   ```
 
-You can preview the production build with `npm run preview`.
+5. Open your browser and navigate to `http://localhost:5173` to view the app.
 
-> To deploy your app, you may need to install an [adapter](https://kit.svelte.dev/docs/adapters) for your target environment.
+## Contributing
+
+Contributions are welcome! Please create a new branch and submit a pull request for any new features or bug fixes.
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE.md) file for details.
