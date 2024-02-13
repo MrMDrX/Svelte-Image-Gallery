@@ -1,5 +1,6 @@
 <script>
   import { onMount } from "svelte";
+  import { fade, fly } from "svelte/transition";
   import axios from "axios";
 
   let keyword = "";
@@ -37,7 +38,13 @@
   </div>
   <div class="photos">
     {#each photos as photo, i (photo.id)}
-      <img src={photo.urls.regular} alt={photo.alt_description} class="image" />
+      <img
+        src={photo.urls.regular}
+        alt={photo.alt_description}
+        class="image"
+        in:fly={{ y: 200, duration: 2000, delay: i * 200 }}
+        out:fade
+      />
     {/each}
   </div>
 </div>
